@@ -1,0 +1,74 @@
+body{
+    color: white;
+    background: url("../images/background.jpg") black;
+    background-repeat: no-repeat;
+    background-size: auto;
+    font-family: 'Ubuntu', sans-serif;
+}
+h1{
+    color: black;
+}
+.jumbotron{
+    background: black;
+    opacity: 1;
+    padding: 0;
+    display: flex;
+}
+.icon{
+    width: 170px;
+    height: auto;
+    margin: 0 5px;
+}
+p{
+    margin: 0;
+}
+.character-card{
+    background: white;
+    color: black;
+    border: 2px yellow solid;
+    margin: 10px;
+    text-align: center;
+}
+.clickable-card:hover{
+    cursor: pointer;
+}
+.enemy-card{
+    color: black;
+    border: 2px blue solid;
+    background-color: red;
+    margin: 10px;
+    text-align: center;
+}
+.btn-light{
+    background: yellow;
+    border-color: yellow;
+}
+.defender-card{
+    border: 2px red solid;
+    background-color: black;
+    margin: 10px;
+    text-align: center;
+}
+#game-end{
+    color: yellow;
+}
+#attack-btn{
+    margin-left: 1%;   
+}
+#attack-display{
+    padding-top: 6%;
+}
+#character-select{
+    display: flex;
+    flex-wrap: wrap;
+}
+#your-character{
+    display: flex;
+}
+#enemies{
+    display: flex;
+    flex-wrap: wrap;
+}
+#defender{
+    display: flex;
+}
