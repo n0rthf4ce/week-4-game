@@ -19,6 +19,48 @@
         <img class="img img-fluid" src="assets/images/banner.jpg" alt="Star Wars RPG">
     </div>
     <div class="container">
+        <!-- Button trigger modal -->
+        <button type="button" id="options-button" class="btn btn-light" data-toggle="modal" data-target="#options">
+            Options
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="options" tabindex="-1" role="dialog" aria-labelledby="options" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="options">Options</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Sound:</h6>
+                        <button type="button" class="btn btn-light" data-toggle="modal" id="sound-toggle">
+                            Sound Off
+                        </button>
+                        <h6>Background:</h6>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label id="death_star_bg"class="btn background-btn btn-light active">
+                                <input type="radio" name="backgrounds" autocomplete="off" checked> Death Star
+                            </label>
+                            <label id="falcon_bg" class="btn background-btn btn-light">
+                                <input type="radio" name="backgrounds" autocomplete="off"> Millenium Falcon
+                            </label>
+                            <label id="storm_bg" class="btn background-btn btn-light">
+                                <input type="radio" name="backgrounds"  autocomplete="off"> Storm Troopers
+                            </label>
+                            <label id="yoda_bg" class="btn background-btn btn-light">
+                                <input type="radio" name="backgrounds" autocomplete="off"> Yoda
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h2 id="character-select-header">Select Your Character:</h2>
         <div id="character-select"></div>
         <div class="row">

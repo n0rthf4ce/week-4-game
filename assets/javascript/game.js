@@ -25,10 +25,10 @@ var startingGroup = [
         id: "obiwan",
         picture: "assets/images/obiwan_kenobi.jpg",
         sound: "assets/sounds/obiwan.wav",
-        hp: 90,
+        hp: 120,
         attack: 30,
         increment: 5,
-        defense: 10
+        defense: 15
     },
     {
         name: "Darth Vader",
@@ -38,7 +38,7 @@ var startingGroup = [
         hp: 150,
         attack: 15,
         increment: 5,
-        defense: 15
+        defense: 20
     },
     {
         name: "Darth Sidious",
@@ -46,11 +46,11 @@ var startingGroup = [
         picture: "assets/images/darth_sidious.jpg",
         sound: "assets/sounds/sidious.wav",
         hp: 150,
-        attack: 20,
+        attack: 25,
         increment: 1,
         defense: 25
     },
-], characters = [], user = [], enemies = [], defender = [], lostGame = false, wonGame = false, audio = document.createElement("audio");;
+], characters = [], user = [], enemies = [], defender = [], soundOn = true, lostGame = false, wonGame = false, audio = document.createElement("audio");;
 
 var showChars = function (arr, cardClass, slot, clickable) {
     $(slot).html("");
@@ -69,6 +69,24 @@ var showChars = function (arr, cardClass, slot, clickable) {
     }
 };
 
+var backgroundToggle = function () {
+    $(".background-btn").on("click", function () {
+        var imgName = $(this).attr("id");
+        $("body").attr("style", "background: url('assets/images/" + imgName + ".jpg') no-repeat center center fixed;background-size: cover;");
+    });
+};
+var soundToggle = function () {
+    $("#sound-toggle").on("click", function () {
+        if (soundOn) {
+            $(this).text("Sound On");
+            audio.pause();
+            soundOn = false;
+        } else {
+            $(this).text("Sound Off");
+            soundOn = true;
+        }
+    });
+};
 var initiateBattle = function () {
     $("#character-select").on("click", ".character-card", function () {
         var myGuy = $(this).attr("id"), targetIndex;
@@ -88,7 +106,7 @@ var initiateBattle = function () {
         showChars(user, "character-card", "#your-character", false);
         audio.pause();
         audio.setAttribute("src", user[0].sound);
-        audio.play();
+        if (soundOn) { audio.play(); }
         showChars(enemies, "enemy-card", "#enemies", true);
     });
 };
@@ -107,7 +125,7 @@ var selectDefender = function () {
             showChars(defender, "defender-card", "#defender", false);
             audio.pause();
             audio.setAttribute("src", defender[0].sound);
-            audio.play();
+            if (soundOn) { audio.play(); }
         }
         $("#defender-header").fadeIn();
         $("#attack-btn").show();
@@ -171,8 +189,8 @@ var reset = function () {
     $("#restart-btn").on("click", function () {
         console.log("restarting");
         audio.pause();
-        audio.setAttribute("src","assets/sounds/theme.mp3")
-        audio.play();
+        audio.setAttribute("src", "assets/sounds/theme.mp3")
+        if (soundOn) { audio.play(); }
         characters = JSON.parse(JSON.stringify(startingGroup));
         user = [];
         enemies = [];
@@ -180,13 +198,14 @@ var reset = function () {
         lostGame = false;
         wonGame = false;
         $("#attack-btn").hide();
-        $("#character-select-header").show();
+        $("#character-select-header").fadeIn();
         $("#your-character-header").hide();
         $("#enemies-header").hide();
         $("#defender-header").hide();
         $("#game-end").text("");
         $("#attack-display").text("");
         $("#defend-display").text("");
+        $("#enemies-header").text("Select Your Enemy:");
         console.log(startingGroup, characters, user);
         showChars(enemies, "enemy-card", "#enemies", true);
         showChars(defender, "defender-card", "#defender", false);
@@ -197,7 +216,7 @@ var reset = function () {
 }
 
 $(document).ready(function () {
-    audio.setAttribute("src","assets/sounds/theme.mp3")
+    audio.setAttribute("src", "assets/sounds/theme.mp3")
     audio.play();
     characters = JSON.parse(JSON.stringify(startingGroup));
     $("#restart-btn").hide();
@@ -206,6 +225,8 @@ $(document).ready(function () {
     $("#enemies-header").hide();
     $("#defender-header").hide();
     showChars(characters, "character-card", "#character-select", true);
+    soundToggle();
+    backgroundToggle();
     initiateBattle();
     selectDefender();
     attack();

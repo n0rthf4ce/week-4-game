@@ -1,8 +1,8 @@
+
 body{
+    background: url("../images/death_star_bg.jpg") no-repeat center center fixed; 
+    background-size: cover;
     color: white;
-    background: url("../images/background.jpg") black;
-    background-repeat: no-repeat;
-    background-size: auto;
     font-family: 'Ubuntu', sans-serif;
 }
 h1{
@@ -49,6 +49,34 @@ p{
     margin: 10px;
     text-align: center;
 }
+.close{
+    color: white;
+    text-shadow: 0 1px 0 grey;
+    opacity: 1;
+}
+.close:hover{
+    color:yellow;
+    text-shadow: 0 1px 0 grey;
+    opacity: 1;
+}
+.modal-content{
+    background: black;
+    border: 1px white solid;
+}
+.btn-light:not(:disabled):not(.disabled).active, 
+.btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle{
+    color: red;
+    background: yellow;
+    border-color: rgb(221, 221, 61);
+}
+.background-btn{
+    border-color: grey;
+}
+#options-button{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 #game-end{
     color: yellow;
 }
@@ -56,7 +84,11 @@ p{
     margin-left: 1%;   
 }
 #attack-display{
+    color: red;
     padding-top: 6%;
+}
+#defend-display{
+    color: red;
 }
 #character-select{
     display: flex;
