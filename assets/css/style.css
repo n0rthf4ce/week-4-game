@@ -84,11 +84,11 @@ p{
     margin-left: 1%;   
 }
 #attack-display{
-    color: red;
+    color: rgb(255, 139, 139);
     padding-top: 6%;
 }
 #defend-display{
-    color: red;
+    color: rgb(185, 0, 0);;
 }
 #character-select{
     display: flex;
