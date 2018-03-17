@@ -43,6 +43,10 @@ p{
     background: yellow;
     border-color: yellow;
 }
+.btn-light:hover{
+    background: rgb(197, 197, 0);
+    border-color: rgb(197, 197, 0);
+}
 .defender-card{
     border: 2px red solid;
     background-color: black;
