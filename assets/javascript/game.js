@@ -151,6 +151,9 @@ var displayResults = function (enemy, hero) {
     }
     if (wonGame) {
         $("#game-end").text("YOU WON!!");
+        audio.pause();
+        audio.setAttribute("src", "assets/sounds/win.mp3");
+        if (soundOn) { audio.play(); }
         $("#restart-btn").show();
         $("#enemies-header").hide();
         $("#attack-btn").hide();
@@ -158,6 +161,9 @@ var displayResults = function (enemy, hero) {
     else if (lostGame) {
         $("#defend-display").text(defender[0].name + " attacked you back for " + defender[0].defense + " damage and destroyed you.");
         $("#game-end").text("You Lost!");
+        audio.pause();
+        audio.setAttribute("src", "assets/sounds/lose.mp3");
+        if (soundOn) { audio.play(); }
         $("#restart-btn").show();
         $("#attack-btn").hide();
     }
@@ -168,7 +174,28 @@ var attack = function () {
     $("#attack-btn").on("click", function () {
         if (defender.length == 1 && !lostGame && !wonGame) {
             const damage = defender[0].defense, enemy = defender[0].name, hero = user[0].name;
+            var soundSelect;
             defender[0].hp -= user[0].attack;
+            switch (user[0].id) {
+                case "luke": case "obiwan": case "vader":
+                    soundSelect = Math.floor(Math.random() * 5) + 1;
+                    audio.pause();
+                    audio.setAttribute("src", "assets/sounds/saber" + soundSelect + ".wav");
+                    if (soundOn) { audio.play(); }
+                    break;
+                case "han":
+                    soundSelect = Math.floor(Math.random() * 4) + 1;
+                    audio.pause();
+                    audio.setAttribute("src", "assets/sounds/lasrhit" + soundSelect + ".wav");
+                    if (soundOn) { audio.play(); }
+                    break;
+                case "sidious":
+                    soundSelect = Math.floor(Math.random() * 3) + 1;
+                    audio.pause();
+                    audio.setAttribute("src", "assets/sounds/lightning" + soundSelect + ".wav");
+                    if (soundOn) { audio.play(); }
+                    break;
+            }
             if (defender[0].hp <= 0) {
                 $("#attack-btn").hide();
                 $("#defender-header").hide();
